@@ -5,6 +5,9 @@ $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
 
 ?>
+
+<?php require_once('../components/nav.php') ?>
+
 <html>
 <head>
     <meta charset="UTF-8">

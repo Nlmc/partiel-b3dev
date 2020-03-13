@@ -3,6 +3,8 @@ session_start();
 $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 ?>
 
+<?php require_once('../components/nav.php') ?>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -22,7 +24,6 @@ $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 </head>
 
 <body>
-<?php // require_once('../components/nav.php') ?>
 <div class="container">
 
     <div class="row">

@@ -1,12 +1,18 @@
 <?php
 session_start();
 $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
-
+$users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
 
 $sql = `SELECT * FROM users`;
 
 ?>
+
+<?php require_once('../components/nav.php') ?>
+
 <html>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://hedinoamane.fr/_css/normalize.css"/>
+<link rel="stylesheet" href="https://hedinoamane.fr/_css/skeleton.css"/>
 <ul class="errors">
     <?php
     foreach ($errors as $error) {

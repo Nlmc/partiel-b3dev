@@ -17,10 +17,10 @@ try {
         $user = new User();
 
         if ($user->save($_POST)){
-            header('Location: ../index.php?controller=users&action=listing');
+            header('Location: ../views/users_list.php');
         } else {
             $_SESSION['errors'] = $user->errors;
-            header('Location: ../index.php?controller=users&action=register');
+            header('Location: ../views/register.php');
         }
     }
 
@@ -33,6 +33,7 @@ try {
     }
 
     function login(){
+        $user = new User();
 
         if ($user->login($_POST)){
             $_SESSION['errors'] = [];
