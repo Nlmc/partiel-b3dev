@@ -40,7 +40,7 @@ $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
                     ?>
                     <tr>
                         <td><?= $user->id ?></td>
-                        <td><?= $user->login ?></td>
+                        <td><?= $user->handle ?></td>
                         <td><?= $user->password ?></td>
                     </tr>
                     <?php
