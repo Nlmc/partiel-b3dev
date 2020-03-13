@@ -1,11 +1,21 @@
 <?php
 session_start();
+$errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 
 echo '<pre>';
 var_dump( $_SESSION);
 echo '</pre>';
+$sql = `SELECT * FROM users`;
+
 ?>
 <html>
+<ul class="errors">
+    <?php
+    foreach ($errors as $error) {
+        echo("<li>" . $error . "</li>");
+    }
+    ?>
+</ul>
     <form action="../controllers/users_controller.php?action=register" method="post">
         <label for="login">Login</label>
         <input type="text" name="login">
@@ -14,9 +24,7 @@ echo '</pre>';
         <label for="lastname">Nom</label>
         <input type="text" name="lastname">
         <label for="firstname">Prenom</label>
-        <input type="text" name="lastname">
-        <label for="image">Photo de profil</label>
-        <input type="file" name="image" accept="image/png, image/jpeg">
+        <input type="text" name="firstname">
         <input type="submit" value="subscribe">
     </form>
 </html>

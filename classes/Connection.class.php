@@ -25,4 +25,4 @@ Class Connection{
             return self::$dbh;
         }
     }
-}
+}   

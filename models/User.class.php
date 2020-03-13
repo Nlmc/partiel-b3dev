@@ -141,23 +141,24 @@ Class User
             $hashedPassword = password_hash($data['password'], PASSWORD_DEFAULT);
             /* syntaxe avec preparedStatements */
             $dbh = Connection::get();
-            $sql = "insert into users (handle, password, firstname, lastname, image) values (:login, :password , :firstname, :lastname, :image)";
+            $sql = "insert into users (handle, password, firstname, lastname) values (:login, :password , :firstname, :lastname)";
             $sth = $dbh->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+
             if ($sth->execute(array(
                 ':login' => $data['login'],
                 ':password' => $hashedPassword,
                 ':firstname' => $data['firstname'],
-                ':lastname' => $data['lastname'],
-                ':image' => $data['image']
+                ':lastname' => $data['lastname']
             ))) {
                 return true;
             } else {
                 // ERROR
                 // put errors in $session
                 $this->errors['pas reussi a creer le user'];
+                die('pk sa march pa');
             }
         }
-        return false;
+
     }
 
     public function login($data)
