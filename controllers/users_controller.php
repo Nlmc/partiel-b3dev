@@ -11,7 +11,7 @@ try {
 
     $user = new User();
 
-    $funcArr = ['register', 'listing'];
+    $funcArr = ['register', 'listing', 'login'];
 
     function register() {
         $user = new User();
@@ -20,8 +20,7 @@ try {
             header('Location: ../index.php?controller=users&action=listing');
         } else {
             $_SESSION['errors'] = $user->errors;
-            die('oui');
-            header('Location: ../index.php?');
+            header('Location: ../index.php?controller=users&action=register');
         }
     }
 
@@ -33,6 +32,19 @@ try {
         header('Location: ../views/users_list.php');
     }
 
+    function login(){
+
+        if ($user->login($_POST)){
+            $_SESSION['errors'] = [];
+            $users = $user->findAll();
+            $_SESSION['users'] = $users;
+            header('Location: ../views/add_message.php');
+            die;
+        }
+        // put errors in $session
+        $_SESSION['errors'] = $user->errors;
+        header('Location: ../views/users_login.php');
+    }
 
     if (in_array($action, $funcArr)){
         call_user_func($action);

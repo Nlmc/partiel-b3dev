@@ -2,9 +2,7 @@
 session_start();
 $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 
-echo '<pre>';
-var_dump( $_SESSION);
-echo '</pre>';
+
 $sql = `SELECT * FROM users`;
 
 ?>
