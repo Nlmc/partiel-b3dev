@@ -11,18 +11,28 @@ try {
 
     $user = new User();
 
-    $funcArr = ['register'];
+    $funcArr = ['register', 'listing'];
 
     function register() {
         $user = new User();
 
         if ($user->save($_POST)){
-            $_SESSION['errors'] = [];
-            header('Location: ../views/users_list.php');
+            header('Location: ../index.php?controller=users&action=listing');
+        } else {
+            $_SESSION['errors'] = $user->errors;
+            die('oui');
+            header('Location: ../index.php?');
         }
-        $_SESSION['errors'] = $user->errors;
-        header('Location: ../views/register.php');
     }
+
+    function listing(){
+        $user = new User();
+        $_SESSION['errors'] = [];
+        $users = $user->findAll();
+        $_SESSION['users'] = $users;
+        header('Location: ../views/users_list.php');
+    }
+
 
     if (in_array($action, $funcArr)){
         call_user_func($action);
