@@ -2,7 +2,7 @@
 // connection base mysql
 $db_config = [
     'host' => 'localhost', // machine, la machine locale s'appelle par convention "localhost"
-    'schema' => 'partiel_php8', // nom du schema
+    'schema' => 'partiel_php', // nom du schema
     'port' => 3306, // 3306 est le port par defaut de mysql
     'user' => 'root', // nom d'utilisateur
     'password' => '', // mot de passe
