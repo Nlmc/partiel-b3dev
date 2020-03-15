@@ -1,9 +1,7 @@
 <?php
-
 session_start();
 $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
 $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
-
 ?>
 
 <?php require_once('../components/nav.php') ?>
@@ -26,14 +24,36 @@ $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
     </style>
 </head>
     <body>
+    <div class="container">
         <div class="row">
-            <h2>Users</h2>
+            <h2>Mon compte</h2>
+        </div>
+        <a href=""></a>
+
+    </div>
+
+
+    <nav>
+        
+        <?php
+
+        if (!empty($_SESSION['user_id'])) {
+            ?>
+            <a href="../controllers/users_controller.php?action=compte">Retour à mon compte </a>
+            <?php
+        }
+        ?>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+
+            <h5>Liste des utilisateurs</h5>
             <table class="u-full-width">
                 <thead>
                 <tr>
                     <th>id</th>
                     <th>login</th>
-                    <th>password</th>
 
                 </tr>
                 </thead>
@@ -43,14 +63,19 @@ $users = isset($_SESSION['users']) ? $_SESSION['users'] : [];
                     ?>
                     <tr>
                         <td><?= $user->id ?></td>
-                        <td><?= $user->handle ?></td>
-                        <td><?= $user->password ?></td>
+                        <td><?= $user->login ?></td>
+
                     </tr>
                     <?php
                 }
                 ?>
                 </tbody>
             </table>
+
+
+        </div>
+
+
         </div>
 
     </body>

@@ -11,7 +11,7 @@ try {
 
     $user = new User();
 
-    $funcArr = ['register', 'listing', 'login'];
+    $funcArr = ['register', 'listing', 'login', 'deco', 'compte'];
 
     function register() {
         $user = new User();
@@ -24,12 +24,25 @@ try {
         }
     }
 
+        if (!empty($_SESSION['user_id'])) {
+
+        }
+
+
     function listing(){
         $user = new User();
         $_SESSION['errors'] = [];
         $users = $user->findAll();
         $_SESSION['users'] = $users;
         header('Location: ../views/users_list.php');
+    }
+
+    function compte(){
+        $user = new User();
+        $_SESSION['errors'] = [];
+        $users = $user->findAll();
+        $_SESSION['users'] = $users;
+        header('Location: ../views/compte.php');
     }
 
     function login(){
@@ -39,11 +52,18 @@ try {
             $_SESSION['errors'] = [];
             $users = $user->findAll();
             $_SESSION['users'] = $users;
-            header('Location: ../views/add_message.php');
+            header('Location: ../views/compte.php');
             die;
         }
         // put errors in $session
         $_SESSION['errors'] = $user->errors;
+        header('Location: ../views/users_login.php');
+    }
+
+    function deco()
+    {
+        $user = new User();
+        $users = $user->deco();
         header('Location: ../views/users_login.php');
     }
 

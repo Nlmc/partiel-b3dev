@@ -43,6 +43,8 @@ $errors = isset($_SESSION['errors']) ? $_SESSION['errors'] : [];
                 <input type="text" id="userLogin" name="login" value="">
                 <label for="userPassword">password</label>
                 <input type="password" id="userLogin" name="password" value="">
+                <br>
+                <a href="../index.php">S'enregister</a>
             </fieldset>
             <input type="submit" value="Envoyer" class="button-primary">
         </form>
